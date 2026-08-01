@@ -12,8 +12,9 @@
 
 This is a Python library that implements natural language processing helpers
 for [ASD-STE100 Issue 9](https://www.asd-ste100.org/) (Simplified Technical
-English) tooling. It is a plain domain library with no CLI/MCP framework
-baked in, so it can be reused directly or as the backend for other tools.
+English) tooling. The `Nlp` class is a plain domain object, reusable
+directly or as the backend for other tools; a `typer`-based CLI (`nlp`) is
+also included for interactive/scripted use.
 
 The `Nlp` class is constructed from a
 [`biz-dfch-asdste100vocab`](https://github.com/dfch/biz.dfch.AsdSte100Vocab)
@@ -21,6 +22,26 @@ The `Nlp` class is constructed from a
 (`nltk`) thesaurus lookup cross-referenced against the vocabulary. The
 WordNet 3.0 corpus is vendored as static package data, so lookups work fully
 offline -- `nltk.download()` is never called at runtime.
+
+## CLI usage
+
+Install the `dev` dependencies (see below), then run the `synonym` command:
+
+```
+uv run nlp synonym quick
+```
+
+By default, the built-in STE100 vocabulary is searched. Add your own JSONL
+vocabulary file(s) with `--file` (repeatable), and toggle the built-in
+vocabulary/technical words with `--ste100`/`--no-ste100` and
+`--technical`/`--no-technical`:
+
+```
+uv run nlp synonym quick --no-ste100 --file ./vocab.jsonl
+```
+
+Use `--help` on the application or any sub-command for the full option list,
+and `--env` to load a specific `.env` file.
 
 Related projects in this family:
 

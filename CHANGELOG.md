@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- CLI (`nlp` console script, `biz.dfch.asdste100nlp.cli:app`), modeled after
+  the sibling `biz-dfch-asdste100vocab` package's `vocab` CLI: a
+  `typer.Typer` application in `cli.py`, with one sub-command module per
+  command under `commands/`.
+- `synonym` command: finds vocabulary entries that are WordNet synonyms of a
+  word, via `Nlp.synonym()`, cross-referenced against the built-in STE100
+  vocabulary and/or additional JSONL files (`--ste100`/`--no-ste100`,
+  `--technical`/`--no-technical`, `--file`), rendered as a Rich table.
+- `typer` and `python-dotenv` added as direct dependencies (CLI framework and
+  `.env` loading, following the sibling package's `--env` option convention).
 - Initial project scaffolding.
 - `Nlp` class (`biz.dfch.asdste100nlp.nlp.Nlp`), constructed from a
   `biz-dfch-asdste100vocab` `Vocab` instance, with a `synonym(value)` method
