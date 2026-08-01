@@ -16,9 +16,6 @@ jobs:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     runs-on: ubuntu-latest
     environment: testpypi
-    strategy:
-      matrix:
-        python-version: ["3.11"]
     steps:
     - name: Checkout
       # uses: actions/checkout@v5
@@ -28,7 +25,7 @@ jobs:
       # uses: actions/setup-python@v6
       uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: "3.11"
 
     - name: Install uv
       # uses: astral-sh/setup-uv@v5 v5.2.1
@@ -42,13 +39,14 @@ jobs:
         uv run --frozen python --version
 
     - name: Install dependencies
-      run: uv sync --frozen --all-extras --python "${{ matrix.python-version }}" # NOSONAR
+      run: uv sync --frozen --all-extras --python "3.11" # NOSONAR
 
     - name: Build sdist and wheel
       run: uv build
 
     - name: Publish to TestPyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
+      # uses: pypa/gh-action-pypi-publish@release/v1
+      uses: pypa/gh-action-pypi-publish@ba38be9e461d3875417946c167d0b5f3d385a247
       with:
         repository-url: https://test.pypi.org/legacy/
 
@@ -60,9 +58,6 @@ jobs:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     runs-on: ubuntu-latest
     environment: pypi
-    strategy:
-      matrix:
-        python-version: ["3.11"]
     steps:
     - name: Checkout
       # uses: actions/checkout@v5
@@ -72,7 +67,7 @@ jobs:
       # uses: actions/setup-python@v6
       uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: "3.11"
 
     - name: Install uv
       # uses: astral-sh/setup-uv@v5 v5.2.1
@@ -86,13 +81,14 @@ jobs:
         uv run --frozen python --version
 
     - name: Install dependencies
-      run: uv sync --frozen --all-extras --python "${{ matrix.python-version }}" # NOSONAR
+      run: uv sync --frozen --all-extras --python "3.11" # NOSONAR
 
     - name: Build sdist and wheel
       run: uv build
 
     - name: Publish to PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
+      # uses: pypa/gh-action-pypi-publish@release/v1
+      uses: pypa/gh-action-pypi-publish@ba38be9e461d3875417946c167d0b5f3d385a247
 
   create-github-release:
     name: Make GitHub Release
@@ -102,9 +98,6 @@ jobs:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.11"]
     steps:
     - name: Checkout
       # uses: actions/checkout@v5
@@ -114,7 +107,7 @@ jobs:
       # uses: actions/setup-python@v6
       uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: "3.11"
 
     - name: Install uv
       # uses: astral-sh/setup-uv@v5 v5.2.1
@@ -129,7 +122,7 @@ jobs:
         gh --version
 
     - name: Install dependencies
-      run: uv sync --frozen --all-extras --python "${{ matrix.python-version }}" # NOSONAR
+      run: uv sync --frozen --all-extras --python "3.11" # NOSONAR
 
     - name: Build sdist and wheel
       run: uv build
