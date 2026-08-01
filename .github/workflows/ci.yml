@@ -39,7 +39,7 @@ jobs:
         uv run --frozen pylint --version
         uv run --frozen mypy --version
 
-    - name: Examine the code with: pylint, ruff, mypy
+    - name: Examine the code with pylint, ruff, mypy
       run: |
         uv run --frozen ruff format --check
         uv run --frozen ruff check
