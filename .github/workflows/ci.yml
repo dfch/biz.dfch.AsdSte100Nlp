@@ -37,11 +37,13 @@ jobs:
         uv run --frozen python --version
         uv run --frozen ruff --version
         uv run --frozen pylint --version
+        uv run --frozen mypy --version
 
-    - name: Analyzing the code with pylint and ruff
+    - name: Examine the code with: pylint, ruff, mypy
       run: |
         uv run --frozen ruff format --check
         uv run --frozen ruff check
+        uv run --frozen mypy
         uv run --frozen pylint $(git ls-files '*.py') || true
 
     - name: Run unit tests

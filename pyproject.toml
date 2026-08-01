@@ -58,6 +58,7 @@ dependencies = [
 [project.optional-dependencies]
 test = [
     "coverage",
+    "mypy>=1.14.0",
     "parameterized>=0.9.0",
     "pylint>=4.0.0",
 ]
@@ -89,6 +90,16 @@ select = ["E", "F", "W"]
 
 [tool.pylint.format]
 max-line-length = 120
+
+[tool.mypy]
+python_version = "3.11"
+files = ["src"]
+namespace_packages = true
+explicit_package_bases = true
+warn_unused_configs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+check_untyped_defs = true
 
 [tool.setuptools]
 include-package-data = true
