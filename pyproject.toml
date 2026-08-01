@@ -45,7 +45,10 @@ classifiers = [
   "Programming Language :: Python :: 3.13"
 ]
 
-dependencies = []
+dependencies = [
+    "biz-dfch-asdste100vocab>=0.8.0",
+    "nltk>=3.9",
+]
 
 # Install project in editable mode:
 # python -m pip install -e ".[dev]"
@@ -94,5 +97,6 @@ namespaces = true
 
 [tool.setuptools.package-data]
 "biz.dfch.asdste100nlp" = [
+    "data/nltk_data/corpora/wordnet/*",
     "py.typed"
 ]

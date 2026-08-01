@@ -17,4 +17,6 @@
 
 """The main library init file."""
 
-__all__: list[str] = []
+from .nlp import Nlp
+
+__all__: list[str] = ["Nlp"]

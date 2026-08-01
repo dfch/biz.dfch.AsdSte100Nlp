@@ -12,9 +12,15 @@
 
 This is a Python library that implements natural language processing helpers
 for [ASD-STE100 Issue 9](https://www.asd-ste100.org/) (Simplified Technical
-English) tooling. It is a plain, dependency-light domain library with no
-CLI/MCP framework baked in, so it can be reused directly or as the backend
-for other tools.
+English) tooling. It is a plain domain library with no CLI/MCP framework
+baked in, so it can be reused directly or as the backend for other tools.
+
+The `Nlp` class is constructed from a
+[`biz-dfch-asdste100vocab`](https://github.com/dfch/biz.dfch.AsdSte100Vocab)
+`Vocab` instance and currently offers `synonym(value)`, a WordNet-based
+(`nltk`) thesaurus lookup cross-referenced against the vocabulary. The
+WordNet 3.0 corpus is vendored as static package data, so lookups work fully
+offline -- `nltk.download()` is never called at runtime.
 
 Related projects in this family:
 
