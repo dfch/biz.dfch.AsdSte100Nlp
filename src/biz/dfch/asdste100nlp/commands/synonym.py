@@ -20,7 +20,6 @@
 from pathlib import Path
 
 import typer
-from rich.console import Console
 
 from biz.dfch.asdste100vocab import Vocab, Word
 
@@ -64,15 +63,8 @@ def synonym(
 
     results: list[Word] = nlp.synonym(word)
 
-    console = Console()
-
     if not results:
-        console.print(
-            typer.style(
-                f"No synonyms found for '{word}'.",
-                fg=typer.colors.YELLOW,
-            )
-        )
+        typer.echo(f"No synonyms found for '{word}'.")
         raise typer.Exit(code=0)
 
     print_word_table(results)

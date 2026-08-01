@@ -36,7 +36,7 @@ from pathlib import Path
 # already made an explicit choice) before `nltk` installs the hook.
 os.environ.setdefault("NLTK_DISABLE_IMPORT_SECURITY", "1")
 
-import nltk
+import nltk  # type: ignore[import-untyped]
 from biz.dfch.asdste100vocab import Vocab
 from biz.dfch.asdste100vocab import Word
 

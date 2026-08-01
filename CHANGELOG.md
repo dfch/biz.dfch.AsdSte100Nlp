@@ -32,3 +32,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `NOTICE` file added, covering `nltk` (Apache-2.0), the vendored WordNet 3.0
   corpus (Princeton University license), and `biz-dfch-asdste100vocab`
   (AGPL-3.0-or-later).
+
+### Changed
+
+- `synonym` command: the "no synonyms found" message is now printed with
+  plain `typer.echo` instead of a `rich.Console`-styled (yellow) message,
+  dropping the direct `rich` import from the command module (the shared
+  `commands/render.py` table renderer still uses `rich`).
+
+### Fixed
+
+- `rich` moved from the `dev` optional-dependency extra to the main
+  `dependencies` in `pyproject.toml`: it is imported unconditionally by
+  `commands/render.py` at CLI runtime (not just by dev/test tooling), so it
+  was missing from installs of the published package.
+- `NOTICE` updated to also cover `typer` (MIT), `python-dotenv`
+  (BSD-3-Clause), and `rich` (MIT), which were direct/runtime dependencies
+  not yet reflected there.
+- `nlp.py`: silenced a `mypy` "missing library stubs or py.typed marker"
+  warning on the `import nltk` statement with a
+  `# type: ignore[import-untyped]` comment, matching the existing pattern
+  already used for `from nltk.corpus import wordnet`.

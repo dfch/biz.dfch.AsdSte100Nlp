@@ -41,6 +41,7 @@ dependencies = [
     { name = "biz-dfch-asdste100vocab" },
     { name = "nltk" },
     { name = "python-dotenv" },
+    { name = "rich" },
     { name = "typer" },
 ]
 
@@ -50,7 +51,6 @@ dev = [
     { name = "coverage" },
     { name = "parameterized" },
     { name = "pylint" },
-    { name = "rich" },
     { name = "ruff" },
     { name = "twine" },
     { name = "uv" },
@@ -71,7 +71,7 @@ requires-dist = [
     { name = "parameterized", marker = "extra == 'test'", specifier = ">=0.9.0" },
     { name = "pylint", marker = "extra == 'test'", specifier = ">=4.0.0" },
     { name = "python-dotenv", specifier = ">=1.2.2" },
-    { name = "rich", marker = "extra == 'dev'", specifier = ">=15.0.0" },
+    { name = "rich", specifier = ">=15.0.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.16.0" },
     { name = "twine", marker = "extra == 'dev'" },
     { name = "typer", specifier = ">=0.12" },
