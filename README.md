@@ -23,6 +23,10 @@ The `Nlp` class is constructed from a
 WordNet 3.0 corpus is vendored as static package data, so lookups work fully
 offline -- `nltk.download()` is never called at runtime.
 
+ASD-STE100: Copyright by (c) [ASD](https://www.asd-europe.org/).
+
+I am in no way affiliated with ASD. ASD does not endorse my work.
+
 ## CLI usage
 
 Install the `dev` dependencies (see below), then run the `synonym` command:
